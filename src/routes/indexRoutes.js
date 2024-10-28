@@ -7,6 +7,7 @@ import moduleRoutes from '../routes/moduleRoutes.js';
 import moduleClientRoutes from '../routes/moduleClientRoutes.js';
 import redirectionRoutes from '../routes/redirectionRoutes.js';
 import companynRoutes from '../routes/CompanyRoutes.js';
+import productRoutes from '../routes/composter/productRoutes.js';
 
 
 const router = express.Router()
@@ -19,6 +20,7 @@ router.use('/api/module', moduleRoutes);
 router.use('/api/moduleclient', moduleClientRoutes);
 router.use('/api/redirection', redirectionRoutes);
 router.use('/api/company', companynRoutes);
+router.use('/api/product', productRoutes);
 
 export default router
 
