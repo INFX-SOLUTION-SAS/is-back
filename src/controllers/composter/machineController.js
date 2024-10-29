@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import express from "express";
 import asyncHandler from "express-async-handler";
 
-import service from "../../services/composter/ProductService.js";
+import service from "../../services/composter/MachineService.js";
 
 
 

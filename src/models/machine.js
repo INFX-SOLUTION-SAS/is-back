@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 import conectDb from '../config/db.js'
 const sequelize = conectDb()
  
-const Model = sequelize.define('machine', {
+const Model = sequelize.define('machines', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -21,7 +21,7 @@ const Model = sequelize.define('machine', {
     allowNull: false
   }
 }, {
-  tableName: 'machine'
+  tableName: 'machines'
 });
 
 Model.sync();

@@ -1,16 +1,16 @@
 import express from 'express'
-import controller from '../../controllers/composter/productController.js'
+import controller from '../../controllers/composter/storeController.js'
 import verifyToken from '../../middleware/authMiddleware.js';
 const router = express.Router()
 
 
 /**
 * @swagger
-* /api/product/list:
+* /api/store/list:
 *   get:
 *     summary: Obtiene todos los registros
 *     tags:
-*       - Product
+*       - Store
 *     description: Retorna una lista de todos los registros.
 *     responses:
 *       200:
@@ -23,11 +23,11 @@ router.get('/list',controller.listController)
 
 /**
 * @swagger
-* /api/product/get:
+* /api/store/get:
 *   get:
 *     summary: Obtiene todos un registro por id
 *     tags:
-*       - Product
+*       - Store
 *     description: Retorna un registro.
 *     parameters:
 *       - in: query
@@ -46,11 +46,11 @@ router.get('/get',controller.getController)
 
 /**
 * @swagger
-* /api/product/insert:
+* /api/store/insert:
 *   post:
 *     summary: ingresa un registro
 *     tags:
-*       - Product
+*       - Store
 *     description: Retorna un registro.
 *     requestBody:
 *       content:
@@ -60,10 +60,10 @@ router.get('/get',controller.getController)
 *             properties:
 *               name:
 *                 type: string
-*                 default: compost
+*                 default: Tunel 1
 *               description:
 *                 type: string
-*                 default: compost palmaceite
+*                 default: Tunel 1 - productivo
 *               state:
 *                 type: boolean
 *     responses:

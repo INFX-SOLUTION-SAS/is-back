@@ -11,9 +11,6 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   define: {
     timestamps: true,
     freezeTableName: true
-  },
-  dialectOptions: {
-    instanceName: 'sql' // Instance name of your SQL Server
   }
 })
 

@@ -7,7 +7,13 @@ import moduleRoutes from '../routes/moduleRoutes.js';
 import moduleClientRoutes from '../routes/moduleClientRoutes.js';
 import redirectionRoutes from '../routes/redirectionRoutes.js';
 import companynRoutes from '../routes/CompanyRoutes.js';
+
+
+//COMPOSTER//
 import productRoutes from '../routes/composter/productRoutes.js';
+import storeRoutes from '../routes/composter/storeRoutes.js';
+import machineRoutes from '../routes/composter/machineRoutes.js';
+import activityRoutes from '../routes/composter/activityRoutes.js';
 
 
 const router = express.Router()
@@ -20,7 +26,12 @@ router.use('/api/module', moduleRoutes);
 router.use('/api/moduleclient', moduleClientRoutes);
 router.use('/api/redirection', redirectionRoutes);
 router.use('/api/company', companynRoutes);
+
+//COMPOSTER//
 router.use('/api/product', productRoutes);
+router.use('/api/store', storeRoutes);
+router.use('/api/machine', machineRoutes);
+router.use('/api/activity', activityRoutes);
 
 export default router
 

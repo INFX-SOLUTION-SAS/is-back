@@ -5,6 +5,7 @@ import path from 'path';
 
 const __dirname = path.resolve();
 const ruta = `${path.join(__dirname, 'src/routes/*.js')}`
+const rutaComposter = `${path.join(__dirname, 'src/routes/composter/*.js')}`
 console.log(__dirname)
 console.log(ruta)
 
@@ -27,7 +28,7 @@ const options = {
     },
     security: [{ bearerAuth: [] }],
   },
-  apis: [ruta], // Rutas de tus archivos de ruta
+  apis: [ruta,rutaComposter], // Rutas de tus archivos de ruta
 };
 
 const specs = swaggerJsdoc(options);

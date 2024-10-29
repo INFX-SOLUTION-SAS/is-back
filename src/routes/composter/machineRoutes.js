@@ -1,16 +1,16 @@
 import express from 'express'
-import controller from '../../controllers/composter/productController.js'
+import controller from '../../controllers/composter/machineController.js'
 import verifyToken from '../../middleware/authMiddleware.js';
 const router = express.Router()
 
 
 /**
 * @swagger
-* /api/product/list:
+* /api/machine/list:
 *   get:
 *     summary: Obtiene todos los registros
 *     tags:
-*       - Product
+*       - Machine
 *     description: Retorna una lista de todos los registros.
 *     responses:
 *       200:
@@ -23,11 +23,11 @@ router.get('/list',controller.listController)
 
 /**
 * @swagger
-* /api/product/get:
+* /api/machine/get:
 *   get:
 *     summary: Obtiene todos un registro por id
 *     tags:
-*       - Product
+*       - Machine
 *     description: Retorna un registro.
 *     parameters:
 *       - in: query
@@ -46,11 +46,11 @@ router.get('/get',controller.getController)
 
 /**
 * @swagger
-* /api/product/insert:
+* /api/machine/insert:
 *   post:
 *     summary: ingresa un registro
 *     tags:
-*       - Product
+*       - Machine
 *     description: Retorna un registro.
 *     requestBody:
 *       content:
@@ -60,10 +60,10 @@ router.get('/get',controller.getController)
 *             properties:
 *               name:
 *                 type: string
-*                 default: compost
+*                 default: Menar
 *               description:
 *                 type: string
-*                 default: compost palmaceite
+*                 default: Menar 5500
 *               state:
 *                 type: boolean
 *     responses:
