@@ -6,6 +6,7 @@ import path from 'path';
 const __dirname = path.resolve();
 const ruta = `${path.join(__dirname, 'src/routes/*.js')}`
 const rutaComposter = `${path.join(__dirname, 'src/routes/composter/*.js')}`
+const rutaDashboard = `${path.join(__dirname, 'src/routes/dashboard/*.js')}`
 console.log(__dirname)
 console.log(ruta)
 

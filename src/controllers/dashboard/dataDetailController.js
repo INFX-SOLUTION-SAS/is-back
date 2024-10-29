@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import express from "express";
 import asyncHandler from "express-async-handler";
 
-import dataDetailService from "../services/general/DataDetailService.js";
+import dataDetailService from "../../services/general/DataDetailService.js";
 
 
 async function dataDetailsByDataController(req, res) {

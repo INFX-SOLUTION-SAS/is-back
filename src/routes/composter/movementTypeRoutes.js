@@ -1,16 +1,16 @@
 import express from 'express'
-import controller from '../../controllers/composter/activityController.js'
+import controller from '../../controllers/composter/movementTypeController.js'
 import verifyToken from '../../middleware/authMiddleware.js';
 const router = express.Router()
 
 
 /**
 * @swagger
-* /api/activity/list:
+* /api/movementtype/list:
 *   get:
 *     summary: Obtiene todos los registros
 *     tags:
-*       - Activity
+*       - MovementType
 *     description: Retorna una lista de todos los registros.
 *     responses:
 *       200:
@@ -23,11 +23,11 @@ router.get('/list',controller.listController)
 
 /**
 * @swagger
-* /api/activity/get:
+* /api/movementtype/get:
 *   get:
 *     summary: Obtiene todos un registro por id
 *     tags:
-*       - Activity
+*       - MovementType
 *     description: Retorna un registro.
 *     parameters:
 *       - in: query
@@ -46,11 +46,11 @@ router.get('/get',controller.getController)
 
 /**
 * @swagger
-* /api/activity/insert:
+* /api/movementtype/insert:
 *   post:
 *     summary: ingresa un registro
 *     tags:
-*       - Activity
+*       - MovementType
 *     description: Retorna un registro.
 *     requestBody:
 *       content:
@@ -65,6 +65,8 @@ router.get('/get',controller.getController)
 *                 type: string
 *                 default: Perfilamiento en tunel
 *               state:
+*                 type: boolean
+*               inventory:
 *                 type: boolean
 *     responses:
 *       200:

@@ -9,23 +9,23 @@ const Model = sequelize.define('movement_details', {
     defaultValue: DataTypes.UUIDV4,
   },
   date: {
-    type: DataTypes.DATE
+    type: DataTypes.DATE,
     allowNull: false
   },
   productId: {
-    type: DataTypes.UUID
+    type: DataTypes.UUID,
     allowNull: false
   },
   machineId: {
-    type: DataTypes.UUID
+    type: DataTypes.UUID,
     allowNull: false
   },
   time: {
-    type: DataTypes.FLOAT
+    type: DataTypes.FLOAT,
     allowNull: false
   },
   activityId: {
-    type: DataTypes.UUID
+    type: DataTypes.UUID,
     allowNull: false
   },
   state: {

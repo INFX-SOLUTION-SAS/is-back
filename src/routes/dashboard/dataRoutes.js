@@ -1,19 +1,19 @@
 import express from 'express'
-import controller from '../controllers/companyController.js'
+import controller from '../../controllers/dashboard/dataController.js'
 const router = express.Router()
 
 
 /**
 * @swagger
-* /api/company/list:
+* /api/data/list:
 *   get:
-*     summary: Retorna el listado de compañias
+*     summary: Obtiene el listado de datas que alimentan el dashboard
 *     tags:
-*       - Company
-*     description: Retorna el listado de compañias.
+*       - Data
+*     description: Retorna una lista de todos los data registrados.
 *     responses:
 *       200:
-*         description: Operación exitosa. Retorna el listado de compañias.
+*         description: Operación exitosa. Devuelve una lista de data.
 *       500:
 *         description: Error interno del servidor.
 */
@@ -22,12 +22,12 @@ router.get('/list',controller.listController)
 
 /**
 * @swagger
-* /api/company/listbyclient/{id}:
+* /api/data/listbyclient/{id}:
 *   get:
-*     summary: Retorna el listado de compañias - por cliente
+*     summary: Obtiene el listado de datas que alimentan el dashboard - por cliente
 *     tags:
-*       - Company
-*     description: Retorna el listado de compañias por cliente
+*       - Data
+*     description: Retorna lista de data por cliente
 *     parameters:
 *       - in: path
 *         name: id
@@ -38,7 +38,7 @@ router.get('/list',controller.listController)
 *           type: string
 *     responses:
 *       200:
-*         description: Operación exitosa. Retorna el listado de compañias por cliente
+*         description: Operación exitosa. Devuelve los datos de un data
 *       500:
 *         description: Error interno del servidor.
 */
@@ -50,22 +50,22 @@ router.get('/listbyclient/:id',controller.listByClientController)
 
 /**
 * @swagger
-* /api/company/get/{id}:
+* /api/data/get/{id}:
 *   get:
-*     summary: Obtiene la informacion de una empresa especifica
+*     summary: Obtiene la informacion de una data especifica
 *     tags:
-*       - Company
-*     description: Retorna los datos de un empresa
+*       - Data
+*     description: Retorna los datos de un data
 *     parameters:
 *       - in: path
 *         name: id
-*         description: ID del empresa a buscar
+*         description: ID del data a buscar
 *         required: true
 *         schema:
 *           type: string
 *     responses:
 *       200:
-*         description: Operación exitosa. Devuelve los datos de una empresa
+*         description: Operación exitosa. Devuelve los datos de un data
 *       500:
 *         description: Error interno del servidor.
 */
@@ -75,12 +75,12 @@ router.get('/get/:id',controller.getController)
 
 /**
 * @swagger
-* /api/company/insert:
+* /api/data/insert:
 *   post:
-*     summary: Crea un nuevo empresa
+*     summary: Crea un nuevo data
 *     tags:
-*       - Company
-*     description: Crea un nuevo empresa con la información proporcionada.
+*       - Data
+*     description: Crea un nuevo data con la información proporcionada.
 *     requestBody:
 *       content:
 *         application/json:

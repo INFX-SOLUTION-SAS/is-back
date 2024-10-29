@@ -1,6 +1,6 @@
 
 
-import MovementType from '../../models/product.js'
+import MovementType from '../../models/movementType.js'
 import { v4 as uuidv4} from 'uuid';
 import mysql from  'mysql2'
 
