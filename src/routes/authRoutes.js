@@ -20,13 +20,13 @@ const router = express.Router();
 *             properties:
 *               username:
 *                 type: string
-*                 default: rgomez
+*                 default: papare
 *               password:
 *                 type: string
-*                 default: rags
+*                 default: 1234567
 *               identification:
 *                 type: string
-*                 default: 100
+*                 default: '001'
 *     responses:
 *       200:
 *         description: Operación exitosa. Devuelve un token.

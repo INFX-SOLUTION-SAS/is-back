@@ -79,6 +79,12 @@ const generateFile = async (body, res) => {
         let centroOperacion = '030'
 
 
+        ///001 PAPARES
+        ///002 LA VICTORIE
+        ///003 AGRICULA GARABULLA
+        ///004 BANACLAIRE
+
+
         if(company=="001") centroOperacion = '030'
         if(company=="002") centroOperacion = '011'
         if(company=="003") centroOperacion = '031'
@@ -112,9 +118,14 @@ const generateFile = async (body, res) => {
             numeroDeRegistro = CellOperations.addCcharacterToTheLeft(counterRows, 7, '0')
             tipoRegistro = '0351'
 
+
+            //preguntar por el centro de operacion del documento, siempre era 030
             let centroOperacionDocumento = '030'
-
-
+            if(company=="001") centroOperacionDocumento = '030'
+            if(company=="002") centroOperacionDocumento = '011'
+            if(company=="003") centroOperacionDocumento = '031'
+            if(company=="004") centroOperacionDocumento = '029'
+    
 
             rowData.push(numeroDeRegistro);
             rowData.push(tipoRegistro);
