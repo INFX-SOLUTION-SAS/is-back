@@ -165,7 +165,15 @@ const generateFile = async (body, res) => {
             if(company=="003") centroOperacionMovimiento = '031'
             if(company=="004") centroOperacionMovimiento = '029'
 
-            if (centroOperaciones != '0') {
+
+            //ojo si no funciiona solo con colocarlo aca, lo dejo afuera
+            if (centroOperaciones == '0') {
+                 if(company=="001") centroOperacionMovimiento = '030'
+                 else if(company=="002") centroOperacionMovimiento = '001'
+                 else if(company=="003") centroOperacionMovimiento = '031'
+                 else if(company=="004") centroOperacionMovimiento = '029'
+            }
+            else{
                 centroOperacionMovimiento = centroOperaciones
             }
             centroOperacionMovimiento = CellOperations.removeSpecialCharacters(centroOperacionMovimiento)
