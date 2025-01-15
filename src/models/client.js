@@ -34,7 +34,7 @@ const Client = sequelize.define('clients', {
     type: DataTypes.STRING(20) ,
     allowNull: false,
     validate: {
-      isIn: [['PALMA', 'EXTRACTURA', 'BANANO']]
+      isIn: [['PALMA', 'EXTRACTURA', 'BANANO', 'OWNER']]
     }
   },
   state: {

@@ -4,7 +4,6 @@ const ModuleSeeder = async () => {
 
     let modules = await Module.findOne();
     
-    console.log(modules)
     if (modules == null) {
         await Module.create({ id: 1, name: 'produccion', description: 'Producción', state: true })
         await Module.create({ id: 2, name: 'laboratorio', description: 'Laboratorio', state: true })
