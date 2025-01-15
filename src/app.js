@@ -4,7 +4,7 @@ import cors from 'cors'
 import conectDb from './config/db.js'
 import swaggerConfig  from './config/swaggerConfig.js';
 import routes from './routes/indexRoutes.js'
-import ModuleSeeder from './seeders/ModuleSeeder.js';
+import Seeder from './seeders/Seeder.js';
 dotenv.config();
 
 ///ejecuto los jobs de sincronización ///
