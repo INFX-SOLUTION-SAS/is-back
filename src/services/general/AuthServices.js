@@ -13,8 +13,12 @@ const login= async(body)=>{
     const username = body.username;   
     const password = body.password;   
     const client = await Client.findOne({ where: { identification } });
+    if (!client) {
+      return { message: 'Usuario no encontrado', status:404 };
+    }
 
     const user = await User.findOne({ where: { username,clientId:client.id } });
+
     if (!user) {
       return { message: 'Usuario no encontrado', status:404 };
     }
@@ -41,6 +45,7 @@ const login= async(body)=>{
 
     return { token, status:200, company:user.lastCompany };
   } catch (error) {
+    console.log("error",error)
     return { message: 'Error en el servidor', status:500 };
   }
 }

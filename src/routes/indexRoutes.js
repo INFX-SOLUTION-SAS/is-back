@@ -11,13 +11,13 @@ import companynRoutes from '../routes/CompanyRoutes.js';
 
 const router = express.Router()
 
-router.use('/api/client',clientRoutes)
+// router.use('/api/client',clientRoutes)
 router.use('/api/auth', authRoutes);
-router.use('/api/data', dataRoutes);
-router.use('/api/dashboard', dataDetailRoutes);
-router.use('/api/module', moduleRoutes);
-router.use('/api/moduleclient', moduleClientRoutes);
-router.use('/api/redirection', redirectionRoutes);
+// router.use('/api/data', dataRoutes);
+// router.use('/api/dashboard', dataDetailRoutes);
+// router.use('/api/module', moduleRoutes);
+// router.use('/api/moduleclient', moduleClientRoutes);
+// router.use('/api/redirection', redirectionRoutes);
 router.use('/api/company', companynRoutes);
 
 export default router

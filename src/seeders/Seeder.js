@@ -5,12 +5,18 @@ import Client from '../models/client.js'
 import { v4 as uuidv4 } from 'uuid';
 import ModuleSeeder from './Modules.js';
 import ClientsSeeder from './Clients.js';
+import UserSeeder from './User.js';
+import RoleSeeder from './RoleSeeder.js';
+import UserRoleSeeder from './UserRole.js';
 
 const Seeder = async() => {
   try {
 
-    await ModuleSeeder()
+     await ModuleSeeder()
     await ClientsSeeder();
+    await UserSeeder();
+    await RoleSeeder();
+    await UserRoleSeeder();
     console.log("Seeder executed..");
   } catch (err) {
     console.log("error seeder:" + err)
