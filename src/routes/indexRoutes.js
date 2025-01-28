@@ -7,12 +7,16 @@ import moduleRoutes from '../routes/moduleRoutes.js';
 import moduleClientRoutes from '../routes/moduleClientRoutes.js';
 import redirectionRoutes from '../routes/redirectionRoutes.js';
 import companynRoutes from '../routes/CompanyRoutes.js';
+import productRoutes from '../routes/inventory/productRoutes.js'
+import unitOfMeasureRoutes  from '../routes/inventory/unitOfMeasureRoutes.js'
 
 
 const router = express.Router()
 
 // router.use('/api/client',clientRoutes)
 router.use('/api/auth', authRoutes);
+router.use('/api/product', productRoutes);
+router.use('/api/unitofmeasure', unitOfMeasureRoutes);
 // router.use('/api/data', dataRoutes);
 // router.use('/api/dashboard', dataDetailRoutes);
 // router.use('/api/module', moduleRoutes);

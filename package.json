@@ -16,7 +16,6 @@
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
@@ -35,6 +34,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "sequelize-cli": "^6.6.2"
   }
 }
