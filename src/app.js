@@ -49,7 +49,7 @@ const startApp = async () => {
         await sequelize.authenticate();
         console.log('Conexión a la base de datos establecida.');
 
-        await sequelize.sync({ force: true }); // Sincronizar modelos
+        await sequelize.sync({ alter: true }); // Sincronizar modelos
         console.log('Modelos sincronizados.');
 
         await Seeder()

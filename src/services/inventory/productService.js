@@ -19,7 +19,6 @@ class ProductService {
       limit: pageSize,  // Limita la cantidad de registros por página
       offset: offset,   // Desplazamiento para la paginación
     });
-    console.log('data..-->', rows, count)
     return {
       data: rows,
       total: count,

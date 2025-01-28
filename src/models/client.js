@@ -49,6 +49,4 @@ const Client = sequelize.define('clients', {
   tableName: 'clients'
 });
 
-Client.sync();
-
 export default Client;

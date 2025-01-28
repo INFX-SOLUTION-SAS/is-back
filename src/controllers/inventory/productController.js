@@ -8,7 +8,8 @@ class ProductController {
     try {
       const product = await productService.createProduct({ name, unitOfMeasureId, max_stock, min_stock, status,
       clientId, description,barcode });
-      res.status(201).json(product);
+      res.status(201).json( {data: {product, success:true}}
+      );
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Error al crear el producto', error: error.message });

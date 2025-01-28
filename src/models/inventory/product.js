@@ -2,7 +2,7 @@ import conectDb from '../../config/db.js'
 const sequelize = conectDb()
 import UnitOfMeasure from './unitOfmesuare.js';
 import { DataTypes } from 'sequelize';
-
+import Client from '../client.js';
 const Product = sequelize.define(
   'Product',
   {
@@ -16,28 +16,24 @@ const Product = sequelize.define(
       allowNull: false,
     },
     description: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-    clientId: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    barcode:{
-        type: DataTypes.STRING,
-        allowNull: false,  
+    barcode: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    min_stock :{
-        type: DataTypes.FLOAT,
-        allowNull: false,  
+    min_stock: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
     },
-    max_stock :{
-        type: DataTypes.FLOAT,
-        allowNull: false,  
+    max_stock: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
     },
-    status:{
-        type: DataTypes.BOOLEAN,
-        allowNull: false,  
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     }
   },
   {
@@ -49,6 +45,11 @@ const Product = sequelize.define(
 Product.belongsTo(UnitOfMeasure, {
   foreignKey: 'unitOfMeasureId',
   as: 'unitOfMeasure',
+});
+
+Product.belongsTo(Client, {
+  foreignKey: 'clientId',
+  as: 'clients',
 });
 
 export default Product;
