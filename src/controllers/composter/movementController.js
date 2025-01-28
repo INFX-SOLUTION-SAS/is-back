@@ -2,14 +2,14 @@ import dotenv from 'dotenv'
 import express from "express";
 import asyncHandler from "express-async-handler";
 
-import service from "../services/general/CompanyService.js";
+import service from "../../services/composter/MovementService.js";
 
 
 
 
 async function insertController(req,res){    
-    if (!req.body.name) {
-        throw "Se necesita el nombre";
+    if (!req.body.lotId) {
+        res.status(403).json("se necesita el lote productivo"); 
       }
     const body = req.body
     let dataresult = await service.insert(body); 
@@ -22,21 +22,13 @@ async function listController(req,res){
     return res.status(dataresult.status).json(dataresult.list);   
 }
 
-async function listByClientController(req,res){ 
-    if (!req.params.id) {
-        throw "Se necesita el id del cliente";
-    }
-    let dataresult = await service.getListByClient(req.params.id);    
-    return res.status(dataresult.status).json(dataresult.list);   
-}
-
 
 
 const getController = asyncHandler(async (req, res) => {
-    if (!req.params.id) {
-        throw "Se necesita el id del detail";
+    if (!req.query.id) {
+        throw "Se necesita el id";
       }
-    const idFind = req.params.id;
+    const idFind = req.query.id;
     let dataresult = await service.get(idFind);    
     return res.status(200).json(dataresult);    
 });
@@ -49,10 +41,11 @@ async function deleteController(req,res){
 
 
 
+
+
 export default {
     listController,
     insertController, 
     getController,
-    deleteController,
-    listByClientController
+    deleteController
 }

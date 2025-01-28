@@ -9,20 +9,28 @@ const Model = sequelize.define('lots', {
     defaultValue: DataTypes.UUIDV4,
   },
   storeId: {
-    type: DataTypes.UUID,
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   productId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  userId: {
     type: DataTypes.UUID,
     allowNull: false
   },
-  initDate: {
-    type: DataTypes.DATE
+  name: {
+    type: DataTypes.STRING,
     allowNull: false
   },
-  finalDate: {
-    type: DataTypes.DATE
+  startDate: {
+    type: DataTypes.DATE,
     allowNull: false
+  },
+  endDate: {
+    type: DataTypes.DATE,
+    allowNull: true
   },
   days: {
     type: DataTypes.INTEGER,

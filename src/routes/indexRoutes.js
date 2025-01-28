@@ -5,7 +5,7 @@ import dataDetailRoutes from './dashboard/dataDetailRoutes.js';
 import dataRoutes from './dashboard/dataRoutes.js';
 import moduleRoutes from './general/moduleRoutes.js';
 import moduleClientRoutes from './general/moduleClientRoutes.js';
-import redirectionRoutes from '../routes/redirectionRoutes.js';
+import redirectionRoutes from './general/redirectionRoutes.js';
 import companynRoutes from './general/CompanyRoutes.js';
 
 
@@ -15,6 +15,9 @@ import storeRoutes from '../routes/composter/storeRoutes.js';
 import machineRoutes from '../routes/composter/machineRoutes.js';
 import activityRoutes from '../routes/composter/activityRoutes.js';
 import movementTypeRoutes from '../routes/composter/movementTypeRoutes.js';
+import lotRoutes from '../routes/composter/lotRoutes.js';
+import movementRoutes from '../routes/composter/movementRoutes.js';
+import movementDetailRoutes from '../routes/composter/movementDetailRoutes.js';
 
 
 const router = express.Router()
@@ -34,6 +37,9 @@ router.use('/api/store', storeRoutes);
 router.use('/api/machine', machineRoutes);
 router.use('/api/activity', activityRoutes);
 router.use('/api/movementtype', movementTypeRoutes);
+router.use('/api/lot', lotRoutes);
+router.use('/api/movement', movementRoutes);
+router.use('/api/movementDetail', movementDetailRoutes);
 
 export default router
 

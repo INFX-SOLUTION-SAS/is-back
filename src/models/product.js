@@ -3,10 +3,10 @@ import conectDb from '../config/db.js'
 const sequelize = conectDb()
  
 const Model = sequelize.define('products', {
-  id: {
-    type: DataTypes.UUID,
+  id: {    
+    type: DataTypes.INTEGER,
     primaryKey: true,
-    defaultValue: DataTypes.UUIDV4,
+    autoIncrement: true
   },
   name: {
     type: DataTypes.STRING(50),
@@ -17,6 +17,10 @@ const Model = sequelize.define('products', {
     allowNull: true
   },
   state: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false
+  },
+  finalProduct: {
     type: DataTypes.BOOLEAN,
     allowNull: false
   }

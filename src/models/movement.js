@@ -2,26 +2,26 @@ import { DataTypes } from 'sequelize';
 import conectDb from '../config/db.js'
 const sequelize = conectDb()
  
-const Model = sequelize.define('production_lots', {
+const Model = sequelize.define('movements', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
   },
   date: {
-    type: DataTypes.DATE
-    allowNull: false
-  },
-  productId: {
-    type: DataTypes.UUID
+    type: DataTypes.DATE,
     allowNull: false
   },
   lotId: {
-    type: DataTypes.UUID
+    type: DataTypes.UUID,
+    allowNull: false
+  },
+  productId: {
+    type: DataTypes.UUID,
     allowNull: false
   },
   quantity: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   type: {
@@ -45,7 +45,7 @@ const Model = sequelize.define('production_lots', {
     allowNull: false
   }
 }, {
-  tableName: 'production_lots'
+  tableName: 'movements'
 });
 
 Model.sync();

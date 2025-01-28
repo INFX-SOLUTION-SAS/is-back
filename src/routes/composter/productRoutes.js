@@ -3,76 +3,11 @@ import controller from '../../controllers/composter/productController.js'
 import verifyToken from '../../middleware/authMiddleware.js';
 const router = express.Router()
 
-
-/**
-* @swagger
-* /api/product/list:
-*   get:
-*     summary: Obtiene todos los registros
-*     tags:
-*       - Product
-*     description: Retorna una lista de todos los registros.
-*     responses:
-*       200:
-*         description: Operación exitosa. Devuelve una lista de registros.
-*       500:
-*         description: Error interno del servidor.
-*/
-
+router.get('/get-all-list',controller.getAllList)
 router.get('/list',controller.listController)
-
-/**
-* @swagger
-* /api/product/get:
-*   get:
-*     summary: Obtiene todos un registro por id
-*     tags:
-*       - Product
-*     description: Retorna un registro.
-*     parameters:
-*       - in: query
-*         name: id
-*         description: ID del registro
-*         required: true
-*         schema:
-*           type: string
-*     responses:
-*       200:
-*         description: Operación exitosa. Devuelve un registro.
-*       500:
-*         description: Error interno del servidor.
-*/
 router.get('/get',controller.getController)
-
-/**
-* @swagger
-* /api/product/insert:
-*   post:
-*     summary: ingresa un registro
-*     tags:
-*       - Product
-*     description: Retorna un registro.
-*     requestBody:
-*       content:
-*         application/json:
-*           schema:
-*             type: object
-*             properties:
-*               name:
-*                 type: string
-*                 default: compost
-*               description:
-*                 type: string
-*                 default: compost palmaceite
-*               state:
-*                 type: boolean
-*     responses:
-*       200:
-*         description: Operación exitosa. Devuelve un registro.
-*       500:
-*         description: Error interno del servidor.
-*/
 router.post('/insert',controller.insertController)
+router.post('/update',controller.update)
 
 
 export default router

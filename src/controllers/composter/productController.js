@@ -6,6 +6,17 @@ import service from "../../services/composter/ProductService.js";
 
 
 
+async function update(req,res){    
+    if (!req.body.name) {
+        throw "Se necesita el nombre";
+      }
+    const body = req.body
+    let dataresult = await service.update(body); 
+    return res.status(dataresult.status).json(dataresult); 
+}
+
+
+
 
 async function insertController(req,res){    
     if (!req.body.name) {
@@ -18,8 +29,17 @@ async function insertController(req,res){
 
 
 async function listController(req,res){ 
-    let dataresult = await service.getList();    
-    return res.status(dataresult.status).json(dataresult.list);   
+  if (!req.query.limit) {
+      throw "Se necesita el limite";
+    }
+  let dataresult = await service.getList(req.query);    
+  return res.status(dataresult.status).json(dataresult);   
+}
+
+
+async function getAllList(req,res){ 
+  let dataresult = await service.getAllList(req.query);    
+  return res.status(dataresult.status).json(dataresult.data);   
 }
 
 
@@ -47,5 +67,7 @@ export default {
     listController,
     insertController, 
     getController,
-    deleteController
+    deleteController,
+    update,
+    getAllList
 }

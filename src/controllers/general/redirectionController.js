@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import express from "express";
-import service from "../services/general/RedirectionService.js";
+import service from "../../services/general/RedirectionService.js";
 
 
 

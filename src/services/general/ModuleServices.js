@@ -16,7 +16,14 @@ const get= async(idFind)=>{
 
 const getList= async()=>{ 
   try{
-    const list = await Module.findAll({ attributes: { exclude: ['createdAt', 'updatedAt'] }});
+    const list = await Module.findAll(
+      { 
+        attributes: { exclude: ['createdAt', 'updatedAt'] },
+        order: [
+          [Module, 'description', 'ASC'] 
+        ]
+      }
+    );
     return { list:list, status:200 };
   }catch(err){
     return { list:null, status:500 , error:err };

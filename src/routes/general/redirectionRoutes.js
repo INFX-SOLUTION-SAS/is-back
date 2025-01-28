@@ -1,6 +1,7 @@
 import express from 'express'
-import controller from '../controllers/redirectionController.js'
-import verifyToken from '../middleware/authMiddleware.js';
+
+import controller from '../../controllers/general/redirectionController.js'
+import verifyToken from '../../middleware/authMiddleware.js';
 const router = express.Router()
 
 /**

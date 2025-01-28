@@ -5,8 +5,9 @@ import path from 'path';
 
 const __dirname = path.resolve();
 const ruta = `${path.join(__dirname, 'src/routes/*.js')}`
-const rutaComposter = `${path.join(__dirname, 'src/routes/composter/*.js')}`
-const rutaDashboard = `${path.join(__dirname, 'src/routes/dashboard/*.js')}`
+const composterRoutes = `${path.join(__dirname, 'src/routes/composter/*.js')}`
+const dasboardRoutes = `${path.join(__dirname, 'src/routes/dashboard/*.js')}`
+const generalRoutes = `${path.join(__dirname, 'src/routes/general/*.js')}`
 console.log(__dirname)
 console.log(ruta)
 
@@ -29,7 +30,7 @@ const options = {
     },
     security: [{ bearerAuth: [] }],
   },
-  apis: [ruta,rutaComposter], // Rutas de tus archivos de ruta
+  apis: [ruta,composterRoutes,generalRoutes], // Rutas de tus archivos de ruta
 };
 
 const specs = swaggerJsdoc(options);

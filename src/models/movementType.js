@@ -3,10 +3,10 @@ import conectDb from '../config/db.js'
 const sequelize = conectDb()
  
 const Model = sequelize.define('movement_type', {
-  id: {
-    type: DataTypes.UUID,
+  id: {    
+    type: DataTypes.INTEGER,
     primaryKey: true,
-    defaultValue: DataTypes.UUIDV4,
+    autoIncrement: true
   },
   name: {
     type: DataTypes.STRING(50),

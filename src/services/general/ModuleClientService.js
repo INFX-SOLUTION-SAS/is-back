@@ -31,7 +31,7 @@ const getModulesByClient = async (id) => {
     ],
     attributes: { exclude: ['createdAt', 'updatedAt'] },
     order: [
-      [Module, 'name', 'ASC'] 
+      [Module, 'description', 'ASC'] 
     ]
 
   });
@@ -62,7 +62,7 @@ const getModulesActiveByClient = async (id) => {
       ],
       attributes: { exclude: ['createdAt', 'updatedAt'] },
       order: [
-        [Module, 'name', 'ASC'] 
+        [Module, 'description', 'ASC'] 
       ]
 
     });

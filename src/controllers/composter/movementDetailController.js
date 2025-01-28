@@ -2,28 +2,14 @@ import dotenv from 'dotenv'
 import express from "express";
 import asyncHandler from "express-async-handler";
 
-import service from "../../services/composter/StoreService.js";
-
-async function getAllList(req,res){ 
-  let dataresult = await service.getAllList();    
-  return res.status(dataresult.status).json(dataresult.data);   
-}
-
-async function update(req,res){    
-    if (!req.body.name) {
-        throw "Se necesita el nombre";
-      }
-    const body = req.body
-    let dataresult = await service.update(body); 
-    return res.status(dataresult.status).json(dataresult); 
-}
+import service from "../../services/composter/MovementDetailService.js";
 
 
 
 
 async function insertController(req,res){    
-    if (!req.body.name) {
-        throw "Se necesita el nombre";
+    if (!req.body.movementId) {
+        res.status(403).json("se necesita el movimiento"); 
       }
     const body = req.body
     let dataresult = await service.insert(body); 
@@ -32,11 +18,8 @@ async function insertController(req,res){
 
 
 async function listController(req,res){ 
-    if (!req.query.limit) {
-        throw "Se necesita el limite";
-      }
-    let dataresult = await service.getList(req.query);    
-    return res.status(dataresult.status).json(dataresult);   
+    let dataresult = await service.getList();    
+    return res.status(dataresult.status).json(dataresult.list);   
 }
 
 
@@ -64,7 +47,5 @@ export default {
     listController,
     insertController, 
     getController,
-    deleteController,
-    update,
-    getAllList
+    deleteController
 }

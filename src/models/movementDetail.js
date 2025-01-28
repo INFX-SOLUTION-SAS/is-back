@@ -8,11 +8,7 @@ const Model = sequelize.define('movement_details', {
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
   },
-  date: {
-    type: DataTypes.DATE,
-    allowNull: false
-  },
-  productId: {
+  movementId: {
     type: DataTypes.UUID,
     allowNull: false
   },
@@ -26,6 +22,10 @@ const Model = sequelize.define('movement_details', {
   },
   activityId: {
     type: DataTypes.UUID,
+    allowNull: false
+  },
+  description: {
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   state: {
