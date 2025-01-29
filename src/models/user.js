@@ -1,7 +1,8 @@
 import { DataTypes } from 'sequelize';
 import conectDb from '../config/db.js'
 const sequelize = conectDb()
-
+import Role from './roles.js';
+import UserRole from './userRoles.js';
  
 const User = sequelize.define('users', {
   id: {
@@ -52,5 +53,5 @@ const User = sequelize.define('users', {
   tableName: 'users'
 });
 
-User.sync();
+
 export default User;

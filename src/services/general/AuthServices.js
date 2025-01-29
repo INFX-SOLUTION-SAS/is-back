@@ -5,6 +5,8 @@ import User from '../../models/user.js'
 import Client from '../../models/client.js'
 import { v4 as uuidv4} from 'uuid';
 import dotenv from 'dotenv'
+import UserRole from '../../models/userRoles.js';
+import Role from '../../models/roles.js';
 
 const login= async(body)=>{
   const JWT_SECRET = process.env.JWT_SECRET
@@ -17,7 +19,26 @@ const login= async(body)=>{
       return { message: 'Usuario no encontrado', status:404 };
     }
 
-    const user = await User.findOne({ where: { username,clientId:client.id } });
+    const user = await User.findOne({ where: { username,clientId:client.id } ,
+      // include: [
+      //   {
+      //     model: Role,
+      //     attributes: ['id', 'name'],
+      //     through: { attributes: [] },
+      //   },
+      // ],
+    });
+
+    
+    const userroles =  await UserRole.findOne({
+      where : {
+        userId : user.id
+      }
+    })
+
+    const role = await Role.findByPk(userroles.roleId)
+    // Extraer solo la información del rol
+   
 
     if (!user) {
       return { message: 'Usuario no encontrado', status:404 };
@@ -26,6 +47,7 @@ const login= async(body)=>{
     if (!isValidPassword) {
       return { message: 'Contraseña incorrecta', status:401 };
     }
+
     const token = jwt.sign(
         {
           id:user.id,      
@@ -33,7 +55,9 @@ const login= async(body)=>{
           clientId:user.clientId,          
           type:client.type,          
           name:client.name,          
-          company:user.lastCompany
+          company:user.lastCompany,
+          roles : role.name,
+          static : role.name=="SuperAdministrador"?true:false
         },
         JWT_SECRET,
         {

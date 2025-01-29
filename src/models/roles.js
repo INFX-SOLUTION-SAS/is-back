@@ -2,7 +2,6 @@ import { DataTypes } from 'sequelize';
 import conectDb from '../config/db.js'
 const sequelize = conectDb()
 
-
 const Role = sequelize.define('Rol', {
   id: {
     type: DataTypes.UUID,
@@ -19,5 +18,6 @@ const Role = sequelize.define('Rol', {
   tableName: 'roles'
 }
 );
-Role.sync()
+
+
 export default Role;

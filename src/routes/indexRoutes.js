@@ -11,6 +11,7 @@ import productRoutes from '../routes/inventory/productRoutes.js'
 import unitOfMeasureRoutes  from '../routes/inventory/unitOfMeasureRoutes.js'
 import warehouseRoutes from '../routes/inventory/warehouseRoutes.js'
 import userRoutes from '../routes/userRoutes.js'
+import roleRoutes   from '../routes/roleRoutes.js'
 
 
 const router = express.Router()
@@ -21,6 +22,7 @@ router.use('/api/product', productRoutes);
 router.use('/api/unitofmeasure', unitOfMeasureRoutes);
 router.use('/api/warehouse', warehouseRoutes);
 router.use('/api/user', userRoutes);
+router.use('/api/roles', roleRoutes);
 // router.use('/api/data', dataRoutes);
 // router.use('/api/dashboard', dataDetailRoutes);
 // router.use('/api/module', moduleRoutes);
