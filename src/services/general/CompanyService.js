@@ -20,10 +20,10 @@ const getList= async()=>{
   }  
 }
 
-const getListByClient= async(clientId)=>{ 
+const getListByClient= async(client_system_id)=>{ 
   try{
     const list = await Company.findAll({ 
-      where : {clientId},
+      where : {client_system_id},
       attributes: { exclude: ['createdAt', 'updatedAt'] }
     });
     return { list:list, status:200 };

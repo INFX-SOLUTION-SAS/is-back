@@ -19,7 +19,7 @@ const login= async(body)=>{
       return { message: 'Usuario no encontrado', status:404 };
     }
 
-    const user = await User.findOne({ where: { username,clientId:client.id } ,
+    const user = await User.findOne({ where: { username,client_system_id:client.id } ,
       // include: [
       //   {
       //     model: Role,
@@ -52,7 +52,7 @@ const login= async(body)=>{
         {
           id:user.id,      
           user:user.username,          
-          clientId:user.clientId,          
+          client_system_id:user.client_system_id,          
           type:client.type,          
           name:client.name,          
           company:user.lastCompany,
@@ -84,9 +84,9 @@ const insertUser= async(body)=>{
     if(client==null){
       return { message: 'El nit no existe', status:500 };
     }
-    const clientId = client.id
+    const client_system_id = client.id
     body.password= passwordHash
-    var usuario = {...body,id,clientId}
+    var usuario = {...body,id,client_system_id}
     var res = await User.create(usuario)
     return { message: 'Usuario creado', status:200 };
   }catch(err){

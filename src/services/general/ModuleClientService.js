@@ -21,7 +21,7 @@ const getModulesByClient = async (id) => {
 
 
   const model = await ModuleClient.findAll({
-    where: { clientId: id },
+    where: { client_system_id: id },
     include: [
       {
         model: Module,
@@ -51,7 +51,7 @@ const getModulesActiveByClient = async (id) => {
 
     const model = await ModuleClient.findAll({
       where: {
-        clientId: id, state: true
+        client_system_id: id, state: true
       },
       include: [
         {
@@ -90,8 +90,8 @@ const getList2 = async () => {
 
 const getList = async () => {
 
-  ModuleClient.belongsTo(Client, { foreignKey: 'clientId' })
-  Client.hasMany(ModuleClient, { foreignKey: 'clientId' })
+  ModuleClient.belongsTo(Client, { foreignKey: 'client_system_id' })
+  Client.hasMany(ModuleClient, { foreignKey: 'client_system_id' })
 
   ModuleClient.belongsTo(Module, { foreignKey: 'moduleId' })
   Module.hasMany(ModuleClient, { foreignKey: 'moduleId' })
@@ -131,7 +131,7 @@ const insert = async (body) => {
       {
         where: {
           moduleId: body.moduleId,
-          clientId: body.clientId
+          client_system_id: body.client_system_id
         }
       }
     )
@@ -149,7 +149,7 @@ const deleteReg = async (body) => {
       {
         where: {
           moduleId: body.moduleId,
-          clientId: body.clientId
+          client_system_id: body.client_system_id
         }
       }
     )

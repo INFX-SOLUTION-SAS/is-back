@@ -11,16 +11,16 @@ import { v4 as uuidv4 } from 'uuid';
 //cron.schedule('*/30 * * * *', async () => {
 //cron.schedule('* * * * *', async () => {
 
-const clientId = process.env.ID_CLIENT
+const client_system_id = process.env.ID_CLIENT
 const urlService = process.env.URL_SERVICE
 
 
 cron.schedule('*/15 * * * *', async () => {
 
   try {
-    //const datas = await Data.findAll({ where: { clientId } });
-    const client = await Client.findOne( { where : {id:clientId}}); 
-    const companies = await Company.findAll({ where: { clientId } }); 
+    //const datas = await Data.findAll({ where: { client_system_id } });
+    const client = await Client.findOne( { where : {id:client_system_id}}); 
+    const companies = await Company.findAll({ where: { client_system_id } }); 
 
     ///Recorro el listado de series que tiene un usuario asignado    
       let dataId = "c4ebd95d-66c5-4625-bb8d-d2fb01521f43"

@@ -35,7 +35,7 @@ const getList= async()=>{
 
 const insertClient= async(body)=>{
   var id = uuidv4()
-  let clientId = id
+  let client_system_id = id
   var client = {...body,id}
   let identification = client.identification
   try{
@@ -50,13 +50,13 @@ const insertClient= async(body)=>{
       for (const module of listModules) {
         let moduleId = module.id
         
-        console.log(`Inteta buscar el moduleclient del modulo ${moduleId} y del cliente: ${clientId}`)
-        model = await ModuleClient.findOne({ where: { moduleId, clientId } });
+        console.log(`Inteta buscar el moduleclient del modulo ${moduleId} y del cliente: ${client_system_id}`)
+        model = await ModuleClient.findOne({ where: { moduleId, client_system_id } });
         if (model == null) {          
-          console.log(`Inteta crear el moduleclient del modulo ${moduleId} y del cliente: ${clientId}`)
+          console.log(`Inteta crear el moduleclient del modulo ${moduleId} y del cliente: ${client_system_id}`)
           let state = false
           let idModuleClient = uuidv4()
-          await ModuleClient.create({id:idModuleClient, clientId, moduleId, state})
+          await ModuleClient.create({id:idModuleClient, client_system_id, moduleId, state})
         }
       }
 

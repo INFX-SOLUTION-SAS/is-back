@@ -6,11 +6,11 @@ class ProductService {
     return await Product.create(data);
   }
 
-  async getAllProducts(clientId, page = 1, pageSize = 10) {
+  async getAllProducts(client_system_id, page = 1, pageSize = 10) {
     const offset = (page - 1) * pageSize; // Calcula el desplazamiento según la página solicitada
   
     const { rows, count } = await Product.findAndCountAll({
-      where: { clientId },
+      where: { client_system_id },
       include: {
         model: UnitOfMeasure,
         as: 'unitOfMeasure',
@@ -27,9 +27,9 @@ class ProductService {
     };
   }
 
-  async getProductById(id, clientId) {
+  async getProductById(id, client_system_id) {
     return await Product.findOne({
-      where: { id, clientId },
+      where: { id, client_system_id },
       include: {
         model: UnitOfMeasure,
         as: 'unitOfMeasure',
@@ -38,14 +38,14 @@ class ProductService {
     });
   }
 
-  async updateProduct(id, clientId, data) {
-    const product = await Product.findOne({ where: { id, clientId } });
+  async updateProduct(id, client_system_id, data) {
+    const product = await Product.findOne({ where: { id, client_system_id } });
     if (!product) throw new Error('Product not found');
     return await product.update(data);
   }
 
-  async deleteProduct(id, clientId) {
-    const product = await Product.findOne({ where: { id, clientId } });
+  async deleteProduct(id, client_system_id) {
+    const product = await Product.findOne({ where: { id, client_system_id } });
     if (!product) throw new Error('Product not found');
     await product.destroy();
     return { message: 'Product deleted successfully' };

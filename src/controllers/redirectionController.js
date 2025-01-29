@@ -21,7 +21,7 @@ async function redirectToModuleController(req, res) {
 
     let module = req.params.module
     let company = req.query.company
-    let clientId = req.user.clientId
+    let client_system_id = req.user.client_system_id
     let name = req.user.name
     let token = req.token
 

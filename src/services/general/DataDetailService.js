@@ -8,10 +8,10 @@ import { Sequelize } from 'sequelize';
 
 
 ///se debe llamar algo así como dashboar cliente. compuesto por todos los dada del cliente y sus series
-const getDataDetailsByClient = async (clientId, option, company) => {
+const getDataDetailsByClient = async (client_system_id, option, company) => {
   try {
     const list = await Data.findAll({
-      where: { clientId },
+      where: { client_system_id },
       attributes: ['id', 'name']
     });
     const arreglo = []

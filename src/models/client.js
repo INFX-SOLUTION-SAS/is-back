@@ -3,7 +3,7 @@ import conectDb from '../config/db.js'
 const sequelize = conectDb()
 
  
-const Client = sequelize.define('clients', {
+const SystemClient = sequelize.define('system_clients', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -46,7 +46,7 @@ const Client = sequelize.define('clients', {
     allowNull: true,
   }  
 }, {
-  tableName: 'clients'
+  tableName: 'system_clients'
 });
 
-export default Client;
+export default SystemClient;

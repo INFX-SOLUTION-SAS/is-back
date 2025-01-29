@@ -1,4 +1,6 @@
+import Role from "../../models/roles.js";
 import User from "../../models/user.js";
+import UserRole from "../../models/userRoles.js";
 
 class UserService {
   // Crear un nuevo usuario
@@ -12,14 +14,41 @@ class UserService {
   }
 
   // Obtener todos los usuarios
-  async getAllUsers( id) {
+  async getAllUsers(id) {
     try {
-      const users = await User.findAll( {
-        where : {
-            clientId : id
-        } 
+      const users = await User.findAll({
+        where: {
+          client_system_id: id
+        },
+        include: [
+          {
+            model: UserRole,
+            as: 'userRoles', // Debe coincidir con la asociación en User.ts
+            include: [{ model: Role, as: 'role' }] // Debe coincidir con la asociación en UserRole.ts
+          }
+        ]
       });
-      return users;
+
+      const usereturn = users.map(u => {
+        const { userRoles, id,
+          client_system_id,
+          username,
+          name,
+          email,
+          state, } = u
+         
+        return {
+          id,
+          client_system_id,
+          username,
+          name,
+          email,
+          state, roleid: userRoles[0].role.id, rolename: userRoles[0].role.name 
+        }
+
+      })
+
+      return usereturn
     } catch (error) {
       throw new Error('Error fetching users: ' + error.message);
     }

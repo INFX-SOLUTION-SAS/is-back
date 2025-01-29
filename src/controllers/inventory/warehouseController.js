@@ -5,8 +5,8 @@ class WarehouseController {
  createWarehouse = async (req, res) => {
   try {
     const { name, description, status } = req.body;
-    const { clientId } = req.query
-    const warehouse = await warehouseService.createWarehouse({ name, description, status,clientId });
+    const { client_system_id } = req.query
+    const warehouse = await warehouseService.createWarehouse({ name, description, status,client_system_id });
     res.status(200).json({ data : warehouse });
   } catch (error) {
     console.error(error);
@@ -17,9 +17,9 @@ class WarehouseController {
 // Obtener todas las bodegas
  getAllWarehouses = async (req, res) => {
   try {
-    const { clientId } = req.query;
+    const { client_system_id } = req.query;
 
-    const warehouses = await warehouseService.getAllWarehouses(clientId);
+    const warehouses = await warehouseService.getAllWarehouses(client_system_id);
     res.status(200).json(warehouses);
   } catch (error) {
     console.error(error);

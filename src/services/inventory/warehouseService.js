@@ -4,11 +4,11 @@ class WarehouseService {
     // Crear una nueva bodega
     createWarehouse = async (data) => {
         try {
-            const { name, description, status, clientId } = data;
+            const { name, description, status, client_system_id } = data;
 
             const [warehouse, created] = await Warehouse.findOrCreate({
-                where: { name, clientId },
-                defaults: { name, description, status, clientId },
+                where: { name, client_system_id },
+                defaults: { name, description, status, client_system_id },
             });
 
             if (!created) {
@@ -22,11 +22,11 @@ class WarehouseService {
     };
 
     // Obtener todas las bodegas
-    getAllWarehouses = async (clientId, page = 1, pageSize = 10) => {
+    getAllWarehouses = async (client_system_id, page = 1, pageSize = 10) => {
         const offset = (page - 1) * pageSize; // Calcula el desplazamiento según la página solicitada
   
         const { rows, count } = await Warehouse.findAndCountAll({
-          where: { clientId },
+          where: { client_system_id },
           limit: pageSize,  // Limita la cantidad de registros por página
           offset: offset,   // Desplazamiento para la paginación
         });
@@ -39,9 +39,9 @@ class WarehouseService {
     };
 
     // Obtener una bodega por su ID
-    getWarehouseById = async (id, clientId) => {
+    getWarehouseById = async (id, client_system_id) => {
         try {
-            const warehouse = await Warehouse.findOne({ where: { id, clientId } });
+            const warehouse = await Warehouse.findOne({ where: { id, client_system_id } });
 
             if (!warehouse) {
                 return { success: false, message: 'Bodega no encontrada.' };
@@ -57,9 +57,9 @@ class WarehouseService {
     // Actualizar una bodega
     updateWarehouse = async (id, data) => {
         try {
-            const { name, description, status, clientId } = data;
+            const { name, description, status, client_system_id } = data;
 
-            const warehouse = await Warehouse.findOne({ where: { id, clientId } });
+            const warehouse = await Warehouse.findOne({ where: { id, client_system_id } });
 
             if (!warehouse) {
                 return { success: false, message: 'Bodega no encontrada.' };
@@ -75,9 +75,9 @@ class WarehouseService {
     };
 
     // Eliminar una bodega
-    deleteWarehouse = async (id, clientId) => {
+    deleteWarehouse = async (id, client_system_id) => {
         try {
-            const warehouse = await Warehouse.findOne({ where: { id, clientId } });
+            const warehouse = await Warehouse.findOne({ where: { id, client_system_id } });
 
             if (!warehouse) {
                 return { success: false, message: 'Bodega no encontrada.' };

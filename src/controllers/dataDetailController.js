@@ -34,10 +34,10 @@ async function listByClient(req, res) {
     if (!req.query.company) {
         return res.status(400).json({ message: "se necesita la compañia" });
     }   
-    let clientId = req.params.id;
+    let client_system_id = req.params.id;
     let option = req.query.option;
     let company = req.query.company;
-    let dataresult = await dataDetailService.getDataDetailsByClient(clientId,option,company);
+    let dataresult = await dataDetailService.getDataDetailsByClient(client_system_id,option,company);
     return res.status(dataresult.status).json(dataresult.list);
 }
 

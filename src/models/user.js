@@ -10,7 +10,7 @@ const User = sequelize.define('users', {
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
   },
-  clientId: {
+  client_system_id: {
     type: DataTypes.UUID,
     allowNull: false
   },
@@ -45,7 +45,7 @@ const User = sequelize.define('users', {
   indexes: [
     {
       unique: true,
-      fields: ['username', 'clientId'] // Restricción única compuesta
+      fields: ['username', 'client_system_id'] // Restricción única compuesta
     }
   ]
 }

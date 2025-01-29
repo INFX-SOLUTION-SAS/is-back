@@ -19,7 +19,7 @@ const Data = sequelize.define('data', {
     type: DataTypes.STRING(45),
     allowNull: true
   },
-  clientId: {
+  client_system_id: {
     type: DataTypes.UUID,
     allowNull: false
   }

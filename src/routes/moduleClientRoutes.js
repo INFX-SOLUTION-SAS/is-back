@@ -86,7 +86,7 @@ router.get('/get',controller.getController)
 *           schema:
 *             type: object
 *             properties:
-*               clientId:
+*               client_system_id:
 *                 type: string
 *               moduleId:
 *                 type: string
@@ -115,7 +115,7 @@ router.post('/insert',controller.insertController)
 *           schema:
 *             type: object
 *             properties:
-*               clientId:
+*               client_system_id:
 *                 type: string
 *               moduleId:
 *                 type: string

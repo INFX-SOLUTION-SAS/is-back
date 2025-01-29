@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ClientsSeeder = async () => {
 
-    let clients = await Client.findOne()
-    if (clients == null) {
+    let clients = await Client.findAll()
+    if (clients.length ==0) {
         await Client.create({
             id: '16b7cbff-3d0b-4dff-bc9c-5f96efa51e95',
             identification: "901666902",

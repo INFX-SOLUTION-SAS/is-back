@@ -5,6 +5,7 @@ import swaggerConfig from './config/swaggerConfig.js';
 import routes from './routes/indexRoutes.js'
 import conectDb from './config/db.js';
 import Seeder from './seeders/Seeder.js';
+import Associations from './models/Associations.js';
 
 dotenv.config({ path: '../local.env' });
 
@@ -48,7 +49,7 @@ const startApp = async () => {
         const sequelize = conectDb()
         await sequelize.authenticate();
         console.log('Conexión a la base de datos establecida.');
-
+        Associations();
         await sequelize.sync({ alter: true }); // Sincronizar modelos
         console.log('Modelos sincronizados.');
 

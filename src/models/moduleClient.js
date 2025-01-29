@@ -11,7 +11,7 @@ const ModuleClient = sequelize.define('moduleclients', {
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
   },
-  clientId: {
+  client_system_id: {
     type: DataTypes.UUID,
     allowNull: false
   },
@@ -28,7 +28,7 @@ const ModuleClient = sequelize.define('moduleclients', {
   indexes: [
     {
       unique: true,
-      fields: ['clientId', 'moduleId'] // Restricción única compuesta
+      fields: ['client_system_id', 'moduleId'] // Restricción única compuesta
     }
   ]
 }

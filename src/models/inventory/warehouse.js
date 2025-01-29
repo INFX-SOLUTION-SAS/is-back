@@ -21,7 +21,7 @@ const Warehouse = sequelize.define('warehouse', {
 });
 
 Warehouse.belongsTo(Client, {
-  foreignKey: 'clientId',
+  foreignKey: 'client_system_id',
   as: 'clients',
 });
 

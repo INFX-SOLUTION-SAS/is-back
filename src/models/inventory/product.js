@@ -48,7 +48,7 @@ Product.belongsTo(UnitOfMeasure, {
 });
 
 Product.belongsTo(Client, {
-  foreignKey: 'clientId',
+  foreignKey: 'client_system_id',
   as: 'clients',
 });
 

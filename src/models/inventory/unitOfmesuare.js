@@ -17,7 +17,7 @@ const UnitOfMeasure = sequelize.define(
     },
   },
   {
-    tableName: 'unitofmeasures',
+    tableName: 'unit_of_measures',
     timestamps: false,
   }
 );

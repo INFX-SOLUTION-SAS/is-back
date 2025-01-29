@@ -11,7 +11,7 @@ const UserSeeder = async () => {
             await User.create({
                 id: '16b7cbff-3d0b-4dff-bc9c-5f96efa51e90',
                 username: 'rgomez',
-                clientId: '16b7cbff-3d0b-4dff-bc9c-5f96efa51e95',
+                client_system_id: '16b7cbff-3d0b-4dff-bc9c-5f96efa51e95',
                 name: 'Ricardo Gomez',
                 password:  await bcrypt.hash("Acpatic2013",7),
                 email: 'rgomez@infxsolution.com',

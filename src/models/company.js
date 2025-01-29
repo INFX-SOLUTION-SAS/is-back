@@ -19,7 +19,7 @@ const Company = sequelize.define('companies', {
     type: DataTypes.INTEGER,
     allowNull: true
   },
-  clientId: {
+  client_system_id: {
     type: DataTypes.UUID,
     allowNull: false
   }

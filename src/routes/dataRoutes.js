@@ -89,7 +89,7 @@ router.get('/get/:id',controller.getController)
 *             properties:
 *               name:
 *                 type: string
-*               clientId:
+*               client_system_id:
 *                 type: string
 *     responses:
 *       201:

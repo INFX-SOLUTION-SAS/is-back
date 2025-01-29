@@ -2,12 +2,12 @@ import productService from "../../services/inventory/productService.js";
 
 class ProductController {
   async createProduct(req, res) {
-    const {clientId } = req.query
+    const {client_system_id } = req.query
     const { name, unitOfMeasureId, max_stock, min_stock, status, description, barcode  } = req.body;
 
     try {
       const product = await productService.createProduct({ name, unitOfMeasureId, max_stock, min_stock, status,
-      clientId, description,barcode });
+      client_system_id, description,barcode });
       res.status(201).json( {data: {product, success:true}}
       );
     } catch (error) {
@@ -17,10 +17,10 @@ class ProductController {
   }
 
   async getAllProducts(req, res) {
-    const { clientId } = req.query;
+    const { client_system_id } = req.query;
 
     try {
-      const products = await productService.getAllProducts(clientId);
+      const products = await productService.getAllProducts(client_system_id);
       res.status(200).json(products);
     } catch (error) {
       console.error(error);
@@ -30,10 +30,10 @@ class ProductController {
 
   async getProductById(req, res) {
     const { id } = req.params;
-    const { clientId } = req.query;
+    const { client_system_id } = req.query;
 
     try {
-      const product = await productService.getProductById(id, clientId);
+      const product = await productService.getProductById(id, client_system_id);
       if (!product) {
         return res.status(404).json({ message: 'Producto no encontrado' });
       }
@@ -46,11 +46,11 @@ class ProductController {
 
   async updateProduct(req, res) {
     const { id } = req.params;
-    const { clientId } = req.query;
+    const { client_system_id } = req.query;
     const { name, unitOfMeasureId } = req.body;
 
     try {
-      const updatedProduct = await productService.updateProduct(id, clientId, { name, unitOfMeasureId });
+      const updatedProduct = await productService.updateProduct(id, client_system_id, { name, unitOfMeasureId });
       res.status(200).json(updatedProduct);
     } catch (error) {
       console.error(error);
@@ -60,10 +60,10 @@ class ProductController {
 
   async deleteProduct(req, res) {
     const { id } = req.params;
-    const { clientId } = req.query;
+    const { client_system_id } = req.query;
 
     try {
-      await productService.deleteProduct(id, clientId);
+      await productService.deleteProduct(id, client_system_id);
       res.status(200).json({ message: 'Producto eliminado correctamente' });
     } catch (error) {
       console.error(error);

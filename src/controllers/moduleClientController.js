@@ -8,7 +8,7 @@ import service from "../services/general/ModuleClientService.js";
 
 
 async function insertController(req, res) {
-    if (!req.body.clientId) {
+    if (!req.body.client_system_id) {
         return res.status(500).json({ menssage: "se necesita el cliente" });
     }
     if (!req.body.moduleId) {
@@ -59,7 +59,7 @@ const getModulesActiveByClientController = asyncHandler(async (req, res) => {
 
 
 async function deleteController(req, res) {
-    if (!req.body.clientId) {
+    if (!req.body.client_system_id) {
         return res.status(500).json({ menssage: "se necesita el cliente" });
     }
     if (!req.body.moduleId) {

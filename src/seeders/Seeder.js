@@ -9,6 +9,7 @@ import UserSeeder from './User.js';
 import RoleSeeder from './RoleSeeder.js';
 import UserRoleSeeder from './UserRole.js';
 import UnitOfMeasureSeed from './UnitOfMeasure.js';
+import InventoryDocumentTypesSeeder from './inventory/InventoryDocumentTypesSeeder.js';
 
 const Seeder = async() => {
   try {
@@ -19,6 +20,7 @@ const Seeder = async() => {
     await RoleSeeder();
     await UserRoleSeeder();
     await UnitOfMeasureSeed();
+    await InventoryDocumentTypesSeeder();
     console.log("Seeder executed..");
   } catch (err) {
     console.log("error seeder:" + err)

@@ -10,15 +10,15 @@ import { v4 as uuidv4 } from 'uuid';
 //cron.schedule('*/30 * * * *', async () => {
 //cron.schedule('* * * * *', async () => {
 
-const clientId = process.env.ID_CLIENT
+const client_system_id = process.env.ID_CLIENT
 const urlService = process.env.URL_SERVICE
 
 
 cron.schedule('*/2 * * * *', async () => {
 
   try {
-    const datas = await Data.findAll({ where: { clientId } });
-    const client = await Client.findOne( { where : {id:clientId}}); 
+    const datas = await Data.findAll({ where: { client_system_id } });
+    const client = await Client.findOne( { where : {id:client_system_id}}); 
     const company = client.company
 
     ///Recorro el listado de series que tiene un usuario asignado

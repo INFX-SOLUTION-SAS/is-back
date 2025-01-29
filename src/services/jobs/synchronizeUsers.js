@@ -22,9 +22,9 @@ import { v4 as uuidv4} from 'uuid';
       const hashedPassword = await bcrypt.hash(passwordPlain, saltRounds);
       const model = await User.findOne( { where : {username}});
       if(model==null){
-        //const clientId= process.env.ID_CLIENT 
-        const clientId= "23fd6d18-927a-470e-8d71-f2959a174d1"
-        await User.create({id,clientId,username,name,password:hashedPassword,state,email})
+        //const client_system_id= process.env.ID_CLIENT 
+        const client_system_id= "23fd6d18-927a-470e-8d71-f2959a174d1"
+        await User.create({id,client_system_id,username,name,password:hashedPassword,state,email})
         console.log("usuario creado")
       }
       else{

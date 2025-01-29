@@ -38,7 +38,7 @@ router.get('/datadetailsbydata/:id',controller.dataDetailsByDataController)
 * @swagger
 * /api/dashboard/listbyclient/{id}:
 *   get:
-*     summary: Obtiene el listado completo de los data y sus respectivos datadetails, mediante el clientId
+*     summary: Obtiene el listado completo de los data y sus respectivos datadetails, mediante el client_system_id
 *     tags:
 *       - dashboard
 *     description: Retorna el listado completo de los data y sus respectivos datadetails

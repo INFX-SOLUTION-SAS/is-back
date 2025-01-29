@@ -15,9 +15,9 @@ class UserController {
   async getAllUsers(req, res) {
     try {
       const {
-        clientId
+        client_system_id
       } = req.query
-      const users = await UserService.getAllUsers(clientId);
+      const users = await UserService.getAllUsers(client_system_id);
       res.status(200).json(users);
     } catch (error) {
       res.status(400).json({ message: error.message });
