@@ -1,7 +1,7 @@
 import conectDb from '../../config/db.js'
 const sequelize = conectDb()
 import { DataTypes } from 'sequelize';
-import ThirdParty from './ThirdParty.js';
+import ThirdParty from '../admin/thirdparty.js';
 
 
 const Supplier = sequelize.define(
@@ -27,6 +27,14 @@ const Supplier = sequelize.define(
       contactPerson: {
         type: DataTypes.STRING,
         allowNull: true,
+      },
+      status : {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+      },
+      client_system_id: {
+        type: DataTypes.UUID,
+        allowNull: false,
       },
     },
     {

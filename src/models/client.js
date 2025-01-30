@@ -12,7 +12,6 @@ const SystemClient = sequelize.define('system_clients', {
   identification: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
   name: {
     type: DataTypes.STRING,

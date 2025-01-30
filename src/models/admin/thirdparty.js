@@ -24,12 +24,10 @@ const ThirdParty = sequelize.define(
       identification: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
       dv: {
         type: DataTypes.STRING,
         allowNull: true,
-        unique: true,
       },
       address: {
         type: DataTypes.STRING,
