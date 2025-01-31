@@ -14,7 +14,7 @@ const InventoryDocumentTypesSeeder = async () => {
           client_system_id: null,
           class: 'entrada',
           static: true,
-          sign: 'positive'
+          sign: 'positivo'
         },
         {
           name: 'Salida',
@@ -22,7 +22,7 @@ const InventoryDocumentTypesSeeder = async () => {
           client_system_id: null,
           class: 'salida',
           static: true,
-          sign: 'negative'
+          sign: 'negativo'
         },
         {
           name: 'Devolución al inventario',
@@ -30,7 +30,7 @@ const InventoryDocumentTypesSeeder = async () => {
           client_system_id: null,
           class: 'devolucion',
           static: true,
-          sign: 'positive'
+          sign: 'positivo'
         },
         {
             name: 'Devolución al proveedor',
@@ -38,7 +38,7 @@ const InventoryDocumentTypesSeeder = async () => {
             client_system_id: null,
             class: 'devolucion',
             static: true,
-            sign: 'negative'
+            sign: 'negativo'
           },
         // {
         //   name: 'Ajuste a Cantidad',

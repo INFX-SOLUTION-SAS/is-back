@@ -36,9 +36,9 @@ const InventoryDocumentType = sequelize.define('InventoryDocumentType', {
     allowNull: false,
   },
   sign: {
-    type: DataTypes.ENUM('positive', 'negative'),  // Added sign field
+    type: DataTypes.ENUM('positivo', 'negativo'),  // Added sign field
     allowNull: false,
-    defaultValue: 'positive',  // Default value to 'positive'
+    defaultValue: 'positivo',  // Default value to 'positive'
   },
 }, {
   sequelize,
