@@ -1,13 +1,16 @@
 import Role from "../../models/roles.js";
 import User from "../../models/user.js";
 import UserRole from "../../models/userRoles.js";
+import conectDb from '../../config/db.js'
+const sequelize = conectDb()
 
 class UserService {
   // Crear un nuevo usuario
   async createUser(data) {
     try {
       const user = await User.create(data);
-      return user;
+      const userRole = await UserRole.create({ userId: user.id, roleId: data.roleid })
+      return { user, userRole };
     } catch (error) {
       throw new Error('Error creating user: ' + error.message);
     }
@@ -36,14 +39,14 @@ class UserService {
           name,
           email,
           state, } = u
-         
+
         return {
           id,
           client_system_id,
           username,
           name,
           email,
-          state, roleid: userRoles[0].role.id, rolename: userRoles[0].role.name 
+          state, roleid: userRoles[0].role.id, rolename: userRoles[0].role.name
         }
 
       })
@@ -69,14 +72,35 @@ class UserService {
 
   // Actualizar un usuario por ID
   async updateUser(id, data) {
+    const transaction = await sequelize.transaction(); // Start transaction
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(id, { transaction });
       if (!user) {
         throw new Error('User not found');
       }
-      await user.update(data);
+      console.log('data user save', user)
+      console.log('data to save', data)
+      // Update user fields efficiently
+      await user.update(
+        {
+          username: data.username,
+          name: data.name,
+          email: data.email,
+          state: data.state,
+        },
+        { transaction }
+      );
+  
+      // Remove existing roles
+      await UserRole.destroy({ where: { userId: user.id }, transaction });
+  
+      // Assign new role
+      await UserRole.create({ userId: user.id, roleId: data.roleid }, { transaction });
+  
+      await transaction.commit(); // Commit transaction
       return user;
     } catch (error) {
+      await transaction.rollback(); // Rollback on error
       throw new Error('Error updating user: ' + error.message);
     }
   }

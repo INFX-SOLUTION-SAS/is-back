@@ -7,7 +7,7 @@ class SupplierController {
       const suplier = req.body;
       suplier.client_system_id = client_system_id
       const supplier = await SupplierService.create(req.body);
-      res.status(201).json(supplier);
+      res.status(200).json(supplier);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }

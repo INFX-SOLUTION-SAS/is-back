@@ -5,7 +5,7 @@ class InventoryDocumentTypeController {
    async create(req, res) {
     try {
       const documentType = await InventoryDocumentTypeService.create(req.body);
-      res.status(201).json(documentType);
+      res.status(200).json(documentType);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

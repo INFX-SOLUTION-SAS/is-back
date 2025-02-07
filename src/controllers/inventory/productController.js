@@ -8,7 +8,7 @@ class ProductController {
     try {
       const product = await productService.createProduct({ name, unitOfMeasureId, max_stock, min_stock, status,
       client_system_id, description,barcode });
-      res.status(201).json( {data: {product, success:true}}
+      res.status(200).json( {data: {product, success:true}}
       );
     } catch (error) {
       console.error(error);

@@ -7,7 +7,7 @@ class ThirdPartyController {
     try {
       const data = req.body;
       const thirdParty = await ThirdPartyService.createThirdParty(data);
-      res.status(201).json(thirdParty);
+      res.status(200).json(thirdParty);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
