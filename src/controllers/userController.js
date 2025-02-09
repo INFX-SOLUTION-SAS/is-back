@@ -15,9 +15,11 @@ class UserController {
   async getAllUsers(req, res) {
     try {
       const {
-        client_system_id
+        client_system_id,
+        pageSize,
+        page
       } = req.query
-      const users = await UserService.getAllUsers(client_system_id);
+      const users = await UserService.getAllUsers(client_system_id, pageSize, page);
       res.status(200).json(users);
     } catch (error) {
       res.status(400).json({ message: error.message });

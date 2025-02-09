@@ -3,7 +3,7 @@ import conectDb from '../config/db.js'
 const sequelize = conectDb()
 import Role from './roles.js';
 import UserRole from './userRoles.js';
- 
+
 const User = sequelize.define('users', {
   id: {
     type: DataTypes.UUID,
@@ -33,25 +33,30 @@ const User = sequelize.define('users', {
   state: {
     type: DataTypes.BOOLEAN,
     allowNull: false
-  },  
+  },
   lastCompany: {
     type: DataTypes.STRING(50),
     allowNull: false,
     defaultValue: 1
   },
+  isDelete:{
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue:false
+  }
 }
-, 
-{
-  indexes: [
-    {
-      unique: true,
-      fields: ['username', 'client_system_id'] // Restricción única compuesta
-    }
-  ]
-}
-, {
-  tableName: 'users'
-});
+  ,
+  {
+    indexes: [
+      {
+        unique: true,
+        fields: ['username', 'client_system_id'] // Restricción única compuesta
+      }
+    ]
+  }
+  , {
+    tableName: 'users'
+  });
 
 
 export default User;

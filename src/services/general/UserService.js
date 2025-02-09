@@ -2,7 +2,9 @@ import Role from "../../models/roles.js";
 import User from "../../models/user.js";
 import UserRole from "../../models/userRoles.js";
 import conectDb from '../../config/db.js'
+import whereIsDelete from "../../constans/whereIsDelete.js";
 const sequelize = conectDb()
+
 
 class UserService {
   // Crear un nuevo usuario
@@ -17,46 +19,56 @@ class UserService {
   }
 
   // Obtener todos los usuarios
-  async getAllUsers(id) {
+  async  getAllUsers(id, page = 1, pageSize = 10, filters = {}) {
     try {
-      const users = await User.findAll({
-        where: {
-          client_system_id: id
-        },
+      const offset = (page - 1) * pageSize; // Calcula el offset para la paginación
+  
+      console.log('offset, pagesize', offset, pageSize)
+      // Construcción dinámica de filtros
+      const whereCondition  = {
+        ...whereIsDelete,
+        client_system_id: id,
+        ...filters // Agrega filtros dinámicos si se proporcionan
+      };
+  
+      const { count, rows } = await User.findAndCountAll({
+        where: whereCondition,
         include: [
           {
             model: UserRole,
-            as: 'userRoles', // Debe coincidir con la asociación en User.ts
-            include: [{ model: Role, as: 'role' }] // Debe coincidir con la asociación en UserRole.ts
+            as: 'userRoles',
+            include: [{ model: Role, as: 'role' }]
           }
-        ]
+        ],
+        pageSize, // Número de registros por página
+        offset, // Punto de inicio para la paginación
+        order: [['createdAt', 'DESC']] // Orden descendente por fecha de creación
       });
-
-      const usereturn = users.map(u => {
-        const { userRoles, id,
-          client_system_id,
-          username,
-          name,
-          email,
-          state, } = u
-
+  
+      const userReturn = rows.map(u => {
+        const { userRoles, id, client_system_id, username, name, email, state } = u;
         return {
           id,
           client_system_id,
           username,
           name,
           email,
-          state, roleid: userRoles[0].role.id, rolename: userRoles[0].role.name
-        }
-
-      })
-
-      return usereturn
+          state,
+          roleid: userRoles[0]?.role?.id || null,
+          rolename: userRoles[0]?.role?.name || null
+        };
+      });
+  
+      return {
+        total: count,
+        page,
+        totalPages: Math.ceil(count / pageSize),
+        data: userReturn
+      };
     } catch (error) {
       throw new Error('Error fetching users: ' + error.message);
     }
   }
-
   // Obtener un usuario por ID
   async getUserById(id) {
     try {
@@ -112,7 +124,9 @@ class UserService {
       if (!user) {
         throw new Error('User not found');
       }
-      await user.destroy();
+      await user.update({
+        isDelete: true 
+      })
       return { message: 'User deleted successfully' };
     } catch (error) {
       throw new Error('Error deleting user: ' + error.message);
