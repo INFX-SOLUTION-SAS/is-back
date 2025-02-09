@@ -19,11 +19,11 @@ class UserService {
   }
 
   // Obtener todos los usuarios
-  async  getAllUsers(id, page = 1, pageSize = 10, filters = {}) {
+  async  getAllUsers(id,pageSize , page,filters = {}) {
     try {
+
+      console.log('PAGE SIZE-->', pageSize)
       const offset = (page - 1) * pageSize; // Calcula el offset para la paginación
-  
-      console.log('offset, pagesize', offset, pageSize)
       // Construcción dinámica de filtros
       const whereCondition  = {
         ...whereIsDelete,
@@ -40,10 +40,11 @@ class UserService {
             include: [{ model: Role, as: 'role' }]
           }
         ],
-        pageSize, // Número de registros por página
+        limit:  parseInt(pageSize), // Número de registros por página
         offset, // Punto de inicio para la paginación
         order: [['createdAt', 'DESC']] // Orden descendente por fecha de creación
       });
+
   
       const userReturn = rows.map(u => {
         const { userRoles, id, client_system_id, username, name, email, state } = u;
