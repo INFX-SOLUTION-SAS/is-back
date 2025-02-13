@@ -87,4 +87,10 @@ router.get('/get',controller.getController)
 router.post('/insert',controller.insertController)
 
 
+
+router.get('/active-list',controller.activeList)
+router.get('/max-consecutive',controller.getMaxConsecutive)
+router.post('/update',controller.update)
+
+
 export default router

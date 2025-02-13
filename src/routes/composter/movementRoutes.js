@@ -90,6 +90,7 @@ router.get('/get',controller.getController)
 *         description: Error interno del servidor.
 */
 router.post('/insert',controller.insertController)
+router.post('/delete',controller.deleteMovement)
 
 
 export default router

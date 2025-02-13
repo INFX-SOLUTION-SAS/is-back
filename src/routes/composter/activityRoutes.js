@@ -3,6 +3,7 @@ import controller from '../../controllers/composter/ActivityController.js'
 import verifyToken from '../../middleware/authMiddleware.js';
 const router = express.Router()
 
+router.get('/active-list',controller.activeList)
 router.get('/list',controller.listController)
 router.get('/get',controller.getController)
 router.post('/insert',controller.insertController)

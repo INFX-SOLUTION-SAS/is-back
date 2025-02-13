@@ -8,13 +8,23 @@ const Model = sequelize.define('lots', {
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
   },
-  storeId: {
+  consecutive: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+  storeId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    defaultValue:1,
   },
   productId: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+  balance: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    defaultValue: 0,
   },
   userId: {
     type: DataTypes.UUID,
@@ -26,11 +36,19 @@ const Model = sequelize.define('lots', {
   },
   startDate: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    get() {
+      const value = this.getDataValue('startDate');
+      return value ? value.toISOString().split('T')[0] : null;
+    }
   },
   endDate: {
     type: DataTypes.DATE,
-    allowNull: true
+    allowNull: true,
+    get() {
+      const value = this.getDataValue('startDate');
+      return value ? value.toISOString().split('T')[0] : null;
+    }
   },
   days: {
     type: DataTypes.INTEGER,

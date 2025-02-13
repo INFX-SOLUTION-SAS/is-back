@@ -8,8 +8,8 @@ import service from "../../services/composter/MovementService.js";
 
 
 async function insertController(req,res){    
-    if (!req.body.lotId) {
-        res.status(403).json("se necesita el lote productivo"); 
+    if (!req.body.movement) {
+        res.status(403).json("se necesita el movimiento"); 
       }
     const body = req.body
     let dataresult = await service.insert(body); 
@@ -35,10 +35,15 @@ const getController = asyncHandler(async (req, res) => {
 
 
 
-async function deleteController(req,res){     
-    res.send("delete");
-}
 
+const deleteMovement = asyncHandler(async (req, res) => {
+    if (!req.body.id) {
+        throw "Se necesita el id";
+      }
+    const idFind = req.body.id;
+    let dataresult = await service.deleteMovement(idFind);    
+    return res.status(200).json(dataresult);    
+});
 
 
 
@@ -47,5 +52,5 @@ export default {
     listController,
     insertController, 
     getController,
-    deleteController
+    deleteMovement
 }

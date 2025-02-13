@@ -15,11 +15,15 @@ const Model = sequelize.define('activities', {
   description: {
     type: DataTypes.STRING(50),
     allowNull: true
-  },
+  },  
   state: {
     type: DataTypes.BOOLEAN,
     allowNull: false
-  }
+  }, 
+  initial: {    
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
 }, {
   tableName: 'activities'
 });

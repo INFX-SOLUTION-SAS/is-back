@@ -16,16 +16,21 @@ const Model = sequelize.define('movements', {
     type: DataTypes.UUID,
     allowNull: false
   },
+  activityId: {
+    type: Number,
+    allowNull: false
+  },
   productId: {
     type: DataTypes.UUID,
     allowNull: false
   },
   quantity: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    defaultValue: 0
   },
   type: {
-    type: DataTypes.UUID,
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   days: {
@@ -36,17 +41,28 @@ const Model = sequelize.define('movements', {
     type: DataTypes.STRING(100),
     allowNull: true
   },
+  ticket: {
+    type: DataTypes.STRING(45),
+    allowNull: true
+  },
   synchronized: {
     type: DataTypes.BOOLEAN,
-    allowNull: false
+    allowNull: true,
+    defaultValue: false
+  },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: true
   },
   state: {
     type: DataTypes.BOOLEAN,
-    allowNull: false
+    allowNull: true,
+    defaultValue: true
   }
 }, {
   tableName: 'movements'
 });
+
 
 Model.sync();
 export default Model;

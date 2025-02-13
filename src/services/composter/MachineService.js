@@ -23,7 +23,7 @@ const getList = async (body) => {
     const offset = (page - 1) * limit;
     const result = await Machine.findAndCountAll({
       attributes: ['id', 'name', 'state', 'description'], // Campos específicos
-      order: [['id', 'ASC']], // Ordenar por nombre
+      order: [['name', 'ASC']], // Ordenar por nombre
       limit: parseInt(limit), // Límite de registros por página
       offset: parseInt(offset), // Desplazamiento para la paginación
     });
@@ -77,9 +77,32 @@ const update = async (body) => {
   }
 }
 
+
+
+
+
+const getActiveList = async (body) => {
+  try {    
+    console.log("llogo por aca")
+    const list = await Machine.findAll({ 
+      where: {state:true},
+      attributes: { exclude: ['createdAt', 'updatedAt'] },      
+      order: [['name', 'ASC']], // Ordenar por nombre
+    });
+    return {success:true, message: "success", status: 200, data: list, error: null };
+  } catch (err) {
+    console.error("Error:", err);
+    return {success:false, message: "error", status: 500, error: err, data: null };
+  }
+};
+
+
+
+
 export default {
   get,
   getList,
   insert,
-  update
+  update,
+  getActiveList
 };

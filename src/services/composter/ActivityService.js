@@ -22,6 +22,7 @@ const getList = async (body) => {
     console.log(limit)
     const offset = (page - 1) * limit;
     const result = await Activity.findAndCountAll({
+      where:{initial:{$not:1}},
       attributes: ['id', 'name', 'state', 'description'], // Campos específicos
       order: [['id', 'ASC']], // Ordenar por nombre
       limit: parseInt(limit), // Límite de registros por página
@@ -40,6 +41,8 @@ const insert = async (body) => {
   const model = {
     name:body.name,
     state:body.state,
+    type:body.type,
+    initial:body.initial,
     description: body.description
   }
 
@@ -62,6 +65,8 @@ const update = async (body) => {
       id:body.id,
       name:body.name,
       state:body.state,
+      type:body.type,
+      initial:body.initial,
       description: body.description
     }    
     const model = await Activity.findOne( { where : {id:activity.id}});
@@ -77,9 +82,31 @@ const update = async (body) => {
   }
 }
 
+
+
+
+
+const getActiveList = async (body) => {
+  try {    
+    console.log("llogo por aca")
+    const list = await Activity.findAll({ 
+      where: {state:true , initial:{$not:1}},
+      attributes: { exclude: ['createdAt', 'updatedAt'] }
+    });
+    return {success:true, message: "success", status: 200, data: list, error: null };
+  } catch (err) {
+    console.error("Error:", err);
+    return {success:false, message: "error", status: 500, error: err, data: null };
+  }
+};
+
+
+
+
 export default {
   get,
   getList,
   insert,
-  update
+  update,
+  getActiveList
 };

@@ -6,6 +6,16 @@ import service from "../../services/composter/LotService.js";
 
 
 
+const getMaxConsecutive = asyncHandler(async (req, res) => {
+    if (!req.query.storeId) {
+        throw "Se necesita el storeId";
+      }
+    const body = req.query;
+    let dataresult = await service.getMaxConsecutive(body);    
+    return res.status(200).json(dataresult);    
+});
+
+
 
 async function insertController(req,res){    
     if (!req.body.storeId) {
@@ -37,6 +47,12 @@ const getController = asyncHandler(async (req, res) => {
 });
 
 
+const activeList = asyncHandler(async (req, res) => {
+    let dataresult = await service.getActiveList();    
+    return res.status(200).json(dataresult.data);    
+});
+
+
 
 async function deleteController(req,res){     
     res.send("delete");
@@ -45,10 +61,23 @@ async function deleteController(req,res){
 
 
 
+async function update(req,res){    
+    if (!req.body.storeId) {
+        throw "Se necesita la bodega";
+      }
+    const body = req.body
+    let dataresult = await service.update(body); 
+    return res.status(dataresult.status).json(dataresult); 
+}
+
+
 
 export default {
     listController,
     insertController, 
     getController,
-    deleteController
+    deleteController,
+    activeList,
+    getMaxConsecutive,
+    update
 }

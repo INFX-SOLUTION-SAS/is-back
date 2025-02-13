@@ -18,6 +18,7 @@ import movementTypeRoutes from '../routes/composter/movementTypeRoutes.js';
 import lotRoutes from '../routes/composter/lotRoutes.js';
 import movementRoutes from '../routes/composter/movementRoutes.js';
 import movementDetailRoutes from '../routes/composter/movementDetailRoutes.js';
+import reportRoutes from '../routes/composter/reportRoutes.js';
 
 
 const router = express.Router()
@@ -40,6 +41,7 @@ router.use('/api/movementtype', movementTypeRoutes);
 router.use('/api/lot', lotRoutes);
 router.use('/api/movement', movementRoutes);
 router.use('/api/movementDetail', movementDetailRoutes);
+router.use('/api/report', reportRoutes);
 
 export default router
 

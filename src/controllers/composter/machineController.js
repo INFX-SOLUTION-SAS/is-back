@@ -54,6 +54,11 @@ async function deleteController(req,res){
 }
 
 
+const activeList = asyncHandler(async (req, res) => {
+    let dataresult = await service.getActiveList();    
+    return res.status(200).json(dataresult.data);    
+});
+
 
 
 
@@ -62,5 +67,6 @@ export default {
     insertController, 
     getController,
     deleteController,
-    update
+    update,
+    activeList
 }

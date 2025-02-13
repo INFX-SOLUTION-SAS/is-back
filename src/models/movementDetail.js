@@ -16,8 +16,12 @@ const Model = sequelize.define('movement_details', {
     type: DataTypes.UUID,
     allowNull: false
   },
+  machineName: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
   time: {
-    type: DataTypes.FLOAT,
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   activityId: {
@@ -28,9 +32,14 @@ const Model = sequelize.define('movement_details', {
     type: DataTypes.STRING(100),
     allowNull: false
   },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false
+  },
   state: {
     type: DataTypes.BOOLEAN,
-    allowNull: false
+    allowNull: false,
+    defaultValue: true
   }
 }, {
   tableName: 'movement_details'
