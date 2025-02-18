@@ -82,7 +82,7 @@ const getExcelMovementDetails = async (req, res) => {
             lot: row.movement.lot.name,
             movementType: row.movement.movement_type?.name || 'N/A',
             activity: row.movement.activity?.name || 'N/A',
-            product: row.movement.lot?.name || 'N/A',
+            product: row.movement.product?.name || 'N/A',
             machineName: row.machineName,
             time: row.time,
             days: row.movement.days,
