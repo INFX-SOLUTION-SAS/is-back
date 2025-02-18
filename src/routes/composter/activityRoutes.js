@@ -1,5 +1,5 @@
 import express from 'express'
-import controller from '../../controllers/composter/ActivityController.js'
+import controller from '../../controllers/composter/activityController.js'
 import verifyToken from '../../middleware/authMiddleware.js';
 const router = express.Router()
 
