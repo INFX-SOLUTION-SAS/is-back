@@ -30,9 +30,9 @@ const deleteMovement = async (movementId) => {
       return { message: "Lote no existe: " + lotId, status: 400 };
     }
 
-    if (type === 1 || type === 4) { // Salida o despacho >>> Incrementar saldo
+    if (type === 1 || type === 4 || type === 6) { // Salida , despacho o ajuste negativo >>> Incrementar saldo
       lot.balance += quantity;
-    } else if (type === 2) { // Entrada >>> Disminuir saldo
+    } else if (type === 2 || type === 5) { // Entrada o ajuste positivo >>> Disminuir saldo
       lot.balance -= quantity;
     }
     else if(type===3){//cuando es un movimiento interno debo disminuir los dias de la actividad
