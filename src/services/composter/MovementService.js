@@ -32,6 +32,12 @@ const deleteMovement = async (movementId) => {
 
     if (type === 1 || type === 4 || type === 6) { // Salida , despacho o ajuste negativo >>> Incrementar saldo
       lot.balance += quantity;
+
+      //si es un ajuste negativo y el saldo es 0, se debe cambiar el estado del lote a false
+      if(type===6 & balance==0){
+        lot.state = false;
+      }
+
     } else if (type === 2 || type === 5) { // Entrada o ajuste positivo >>> Disminuir saldo
       lot.balance -= quantity;
     }
