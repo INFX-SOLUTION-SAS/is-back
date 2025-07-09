@@ -54,8 +54,6 @@ router.get('/get/:id',verifyToken,controller.getClientController)
 * /api/client/insert:
 *   post:
 *     summary: Crea un nuevo cliente
-*     security:
-*       - bearerAuth: []
 *     tags:
 *       - Clientes
 *     description: Crea un nuevo cliente con la información proporcionada.
@@ -87,7 +85,7 @@ router.get('/get/:id',verifyToken,controller.getClientController)
 *       400:
 *         description: Datos de cliente no válidos.
 */
-router.post('/insert',verifyToken,controller.insertClientController)
+router.post('/insert',controller.insertClientController)
 
 /**
 * @swagger
